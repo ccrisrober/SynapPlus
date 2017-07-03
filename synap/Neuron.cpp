@@ -6,7 +6,7 @@ Neuron::Neuron( )
 {
   id = Neuron::uid( );
   bias = ( static_cast < float > ( rand( ) ) /
-    static_cast < float > ( RAND_MAX ) ) * 2.0f - 1.0f;
+    static_cast < float > ( RAND_MAX ) ) /* * 2.0f - 1.0f*/;
 
   selfConnection = new Neuron::Connection( this, this, 0.0f );
 }

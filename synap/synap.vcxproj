@@ -76,9 +76,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Layer.h" />
     <ClInclude Include="Neuron.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Neuron.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>

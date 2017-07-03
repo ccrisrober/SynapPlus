@@ -10,7 +10,7 @@ public:
   public:
     Connection( Neuron* from, Neuron* to )
       : Connection( from, to, (static_cast < float > ( rand( ) ) / 
-      static_cast < float > ( RAND_MAX ) ) * 2.0f - 1.0f )
+      static_cast < float > ( RAND_MAX ) ) /* * 2.0f - 1.0f */ )
     {
     }
     Connection( Neuron* from_, Neuron* to_, float weight_ )
