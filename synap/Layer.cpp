@@ -1,4 +1,4 @@
-#include "Layer.h"
+/*#include "Layer.h"
 
 Layer::Layer( unsigned int size )
 {
@@ -8,3 +8,4 @@ Layer::Layer( unsigned int size )
     neurons[ i ] = new Neuron( );
   }
 }
+*/

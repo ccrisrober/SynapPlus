@@ -128,3 +128,37 @@ float Neuron::activate( float v )
 
   return this->activation;
 }
+
+void Neuron::propagate( float rate )
+{
+  float error = 0.0f;
+
+  for ( unsigned int id = 0; id < connections.projected.size( ); ++id )
+  {
+    Neuron::Connection* connection = connections.projected[ id ];
+    Neuron* neuron = connection->to;
+
+    error += neuron->error.responsibility * connection->gain * connection->weight;
+  }
+
+  // Projected error responsibility
+  this->error.projected = this->derivative * error;
+
+  error = 0.0f;
+
+
+
+  // Learning rate
+  if ( rate <= 0.0f ) rate = 0.1f;
+  
+
+  // Adjust bias
+  this->bias += rate * this->error.responsibility;
+}
+
+void Neuron::propagate( float rate, float target )
+{
+  float error = 0.0f;
+
+  this->error.responsibility = this->error.projected = target - this->activation;
+}

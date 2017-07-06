@@ -1,9 +1,10 @@
-#pragma once
+#ifdef HOLA
 
 #include "Neuron.h"
 
 #include <vector>
 #include <assert.h>
+#include <algorithm>
 
 class Layer
 {
@@ -86,6 +87,28 @@ public:
     }
   };
   Layer( unsigned int size );
+
+  void propagate( float rate, std::vector< float > target = { } )
+  {
+    if ( !target.empty( ) )
+    {
+      assert( target.size( ) == neurons.size( ) );
+
+      for ( unsigned int id = neurons.size( ) - 1; id >= 0; --id )
+      {
+        Neuron* neuron = neurons[ id ];
+        neuron->propagate( rate, target[ id ] );
+      }
+    }
+    else
+    {
+      for ( unsigned int id = neurons.size( ) - 1; id >= 0; --id )
+      {
+        Neuron* neuron = neurons[ id ];
+        neuron->propagate( rate );
+      }
+    }
+  }
 
   std::vector< float > activate( std::vector< float > weights = { } )
   {
@@ -195,3 +218,5 @@ public:
   std::vector< Layer::Connection* > connectedTo;
 };
 
+
+#endif
